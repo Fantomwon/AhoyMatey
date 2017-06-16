@@ -6,7 +6,11 @@ using UnityStandardAssets.CrossPlatformInput;
 public class Player : NetworkBehaviour {
 
 	private Vector3 inputValue;
-	
+
+
+	void Start () {
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (!isLocalPlayer) {
@@ -18,5 +22,10 @@ public class Player : NetworkBehaviour {
 		inputValue.z = CrossPlatformInputManager.GetAxis ("Vertical");
 
 		transform.Translate (inputValue);
+	}
+
+	public override void OnStartLocalPlayer () {
+		Debug.Log("HEYYO HEYYO HEYYO");
+		GetComponentInChildren<Camera>().enabled = true;
 	}
 }
